@@ -1,4 +1,4 @@
-<?php
+<?php  
 
 /*
 |--------------------------------------------------------------------------
@@ -11,7 +11,34 @@
 |
 */
 
-Route::get('/', function()
+Route::get('/', 'HomeController@showWelcome');
+
+Route::get('/resume', 'HomeController@showResume');
+
+Route::get('/portfolio', 'HomeController@showPortfolio');
+
+Route::resource('posts', 'PostsController');
+
+Route::get('orm-test', function ()
 {
-	return View::make('hello');
+$post = Post::find(1);
+$post->delete();
+});
+
+
+Route::get('/sayhello/{name?}', function($name = 'world')
+{
+    return View::make('my-first-view');
+});
+
+Route::get('/roll-dice/{guess}', function($guess)
+{
+	$rand = mt_rand (1,6);
+	$message = ($rand == $guess) ? 'correct' :'not correct';
+	$data = [];
+	$data ['rand'] = $rand;
+	$data ['guess'] = $guess;
+	$data ['message'] = $message;
+
+    return  View::make('roll-dice')->with($data);  
 });
