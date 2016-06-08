@@ -28,4 +28,9 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 		return $this->hasMany('Post');
 	}
 
+	public static $rules = array(
+	    'email'	=> 'required',
+	    'password' => 'required',
+	);
+
 }  

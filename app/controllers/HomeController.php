@@ -1,6 +1,7 @@
 <?php
 
-class HomeController extends BaseController {
+class HomeController extends BaseController 
+{
 
 	/*
 	|--------------------------------------------------------------------------
@@ -20,15 +21,42 @@ class HomeController extends BaseController {
 		return View::make('hello');
 	}
 
-	public function showResume()
+	public function Profile()
 	{
-    	return View::make('resume');
+		if (Auth::check()){
+			return View::make('profile');
+		} else {
+			return Redirect::to('/');
+		}
 	}
 
-	public function showPortfolio() 
+	public function logIn()
 	{
-    	return View::make('portfolio');
+
+		$validator = Validator::make(Input::all(), User::$rules);
+
+		// dd(Input::get('email'), Input::get('password'));
+
+		if ($validator->passes()) {
+			$email = Input::get('email');
+			$password = Input::get('password');
+
+			if (Auth::attempt(array('email' => $email, 'password' => $password))) {
+				Session::flash('successMessage', 'Successfuly logged in!');
+		    	return Redirect::action('HomeController@profile');
+    		}
+    	}
+
+		Session::flash('errorMessage', 'Failed to log in');
+		return Redirect::back();
 	}
 
+	public function logOut()
+	{
+		Auth::logout();
+		return Redirect::to('/');
+	}
 }
+
+
  

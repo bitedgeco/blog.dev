@@ -134,4 +134,8 @@ class PostsController extends \BaseController {
 		return Redirect::action('PostsController@index');
 	}
 
+	public function __construct()
+	{
+		$this->beforeFilter('auth', ['except' =>['index', 'show']]);
+	}
 }

@@ -1,3 +1,8 @@
+html {
+	position: relative;
+    min-height: 100%;
+}
+
 body {
 	font-family: "Avenir Next";
 	background-color: #F9F9F9;
@@ -7,11 +12,26 @@ h1 {
 	text-align: center;
 }
 
- hr { 
-  border: 0; 
-  height: 1px; 
-  background-image: -webkit-linear-gradient(left, #f0f0f0, #ffcd4b, #f0f0f0);
-  background-image: -moz-linear-gradient(left, #f0f0f0, #ffcd4b, #f0f0f0);
-  background-image: -ms-linear-gradient(left, #f0f0f0, #ffcd4b, #f0f0f0);
-  background-image: -o-linear-gradient(left, #f0f0f0, #ffcd4b, #f0f0f0); 
+hr { 
+	border: 0; 
+	height: 1px; 
+	background-image: -webkit-linear-gradient(left, #f0f0f0, #ffcd4b, #f0f0f0);
+	background-image: -moz-linear-gradient(left, #f0f0f0, #ffcd4b, #f0f0f0);
+	background-image: -ms-linear-gradient(left, #f0f0f0, #ffcd4b, #f0f0f0);
+	background-image: -o-linear-gradient(left, #f0f0f0, #ffcd4b, #f0f0f0); 
 }
+
+#content {
+	padding-bottom: 60px;
+}
+
+.panel-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+}
+
+
+
+
