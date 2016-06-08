@@ -31,3 +31,5 @@ Route::post('/logIn', 'HomeController@logIn' );
 Route::get('/profile', 'HomeController@profile' );
 
 Route::get('/logOut', 'HomeController@logOut' );
+
+Route::post('/newUser', 'HomeController@storeUser' );

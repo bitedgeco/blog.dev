@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-{{ Auth::user()->screen_name}} Profile
+Insert Author's name here Profile
 @stop
 
 @section('content')

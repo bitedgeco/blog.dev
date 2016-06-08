@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 class HomeController extends BaseController 
 {
@@ -16,11 +16,6 @@ class HomeController extends BaseController
 	|
 	*/
 
-	public function showWelcome()
-	{
-		return View::make('hello');
-	}
-
 	public function Profile()
 	{
 		if (Auth::check()){
@@ -33,9 +28,7 @@ class HomeController extends BaseController
 	public function logIn()
 	{
 
-		$validator = Validator::make(Input::all(), User::$rules);
-
-		// dd(Input::get('email'), Input::get('password'));
+		$validator = Validator::make(Input::all(), User::$logInRules);
 
 		if ($validator->passes()) {
 			$email = Input::get('email');
@@ -56,6 +49,39 @@ class HomeController extends BaseController
 		Auth::logout();
 		return Redirect::to('/');
 	}
+
+
+	public function storeUser()
+	{
+		$validator = Validator::make(Input::all(), User::$NewUserRules);
+
+		if ($validator->fails()) {
+			Session::flash('errorMessage', 'Failed to creat user');
+			return Redirect::back()->withInput()->withErrors($validator);
+
+		} else {
+
+			if (User::findByScreenNameOrEmail(Input::get('screen_name')) || User::findByScreenNameOrEmail(Input::get('email'))){
+				Session::flash('errorMessage', 'Screen name or email already in use');
+				return Redirect::back();
+			}
+
+			$user = new User();
+			$user->screen_name = Input::get('screen_name');
+			$user->email = Input::get('email');
+			$user->password = Input::get('password');
+
+			if ($user->save()) {
+				Session::flash('successMessage', 'Successfuly created please log in!');
+				return Redirect::back();
+			} else {
+				Session::flash('errorMessage', 'Failed to creat user');
+				return Redirect::back()->withInput();
+			}
+		}
+	}	
+
+
 }
 
 

@@ -92,25 +92,26 @@
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-              <form method="POST">
-                <div id="signupNameField" class="form-group col-sm-10 col-sm-offset-1">
-                  <label for="signupNameField" class="sr-only">Sceen name</label>
-                  <input name='signupNameField' id="signupNameField" type="text" class="form-control" name="title" maxlength="50" placeholder="Sceen name" required>
+              <form method="POST" action = "{{{ action('HomeController@storeUser') }}}">  
+                  {{ Form::token() }}
+                <div id="screen_name" class="form-group col-sm-10 col-sm-offset-1">
+                  <label for="screen_name" class="sr-only">Sceen name</label>
+                  <input name='screen_name' id="screen_name" type="text" class="form-control" name="title" maxlength="50" placeholder="Sceen name" required>
                 </div>
-                <div id="signupEmailField" class="form-group col-sm-10 col-sm-offset-1">
-                    <label for="signupEmailField" class="sr-only">E-mail</label>
-                    <input name='signupEmailField' id="signupEmailField" type="text" class="form-control" name="title" maxlength="50" placeholder="Your E-mail"required>
+                <div id="email" class="form-group col-sm-10 col-sm-offset-1">
+                    <label for="email" class="sr-only">E-mail</label>
+                    <input name='email' id="email" type="text" class="form-control" name="title" maxlength="50" placeholder="Your E-mail" required>
                 </div>
-                <div id="signupPasswordField" class="form-group col-sm-10 col-sm-offset-1">
-                  <label for="signupPasswordField" class="sr-only">Password</label>
-                  <input name='signupPasswordField' id="signupPasswordField" type="password" class="form-control" name="title" maxlength="20" placeholder="Create a password" required>
+                <div id="password" class="form-group col-sm-10 col-sm-offset-1">
+                  <label for="password" class="sr-only">Password</label>
+                  <input name='password' id="password" type="password" class="form-control" name="title" maxlength="20" placeholder="Create a password" required>
                 </div>
-                <div id="signupConfirmField" class="form-group col-sm-10 col-sm-offset-1">
-                    <label for="signupConfirmField" class="sr-only">Confirm password</label>
-                    <input name='signupConfirmField' id="signupConfirmField" type="password" class="form-control" name="title" maxlength="20" placeholder="Confirm Password"required>
+                <div id="password_confirmation" class="form-group col-sm-10 col-sm-offset-1">
+                    <label for="password_confirmation" class="sr-only">Confirm password</label>
+                    <input name='password_confirmation' id="password_confirmation" type="password" class="form-control" name="title" maxlength="20" placeholder="Confirm Password" required>
                 </div>
                 <div id="signup-button" class="form-group col-sm-10 col-sm-offset-1 text-center">
-                    <button type="submit" class="btn btn-primary btn-block">Click to sign up</button>
+                    <button type="submit" class="btn btn-primary btn-block">Sign up</button>
                 </div>
               </form>
             </div>

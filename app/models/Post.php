@@ -5,9 +5,9 @@ class Post extends BaseModel
     protected $table = 'posts';
 
     public static $rules = array(
-    'title'      => 'required',
-    'img_url'	=> 'url',
-    'content'       => 'required',
+    'title' => 'required',
+    'img_url' => 'url',
+    'content' => 'required',
     'meta_description' => 'max:160'
 	);
 

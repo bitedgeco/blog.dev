@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 use Illuminate\Auth\UserTrait;
 use Illuminate\Auth\UserInterface;
@@ -28,9 +28,22 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
 		return $this->hasMany('Post');
 	}
 
-	public static $rules = array(
+	public static $logInRules = array(
 	    'email'	=> 'required',
 	    'password' => 'required',
 	);
 
-}  
+	public static $NewUserRules = array(
+		'screen_name' => 'required',
+		'email'	=> 'required | email',
+		'password' => 'required | confirmed',
+		'password_confirmation' => 'required',
+	);
+
+	public static function findByScreenNameOrEmail($input)
+	{
+		return User::where('email', 'like' , $input)
+					-> orWhere('screen_name', 'like', $input)->first();
+	}
+
+}
