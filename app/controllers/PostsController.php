@@ -10,7 +10,7 @@ class PostsController extends \BaseController {
 
 	public function __construct()
 	{
-		$this->beforeFilter('auth', ['except' =>['index', 'show', 'author']]);
+		$this->beforeFilter('auth', ['except' =>['index', 'show', 'author', 'search']]);
 	}
 
 	public function index() 
