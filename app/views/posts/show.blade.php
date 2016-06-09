@@ -19,7 +19,7 @@
 
     <img height="300" src="{{{$post->img_url}}}">
     <div>
-    	{{{$post->content}}}
+    	{{$post->content}}
     </div>
     <br>
     @if (Auth::id() == $post->user->id)

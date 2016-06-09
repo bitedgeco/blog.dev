@@ -11,7 +11,7 @@
 	<a href="/posts/{{{$post->id}}}">
     <h2>{{{$post->title}}}</h2>
     <img height="100" src="{{{$post->img_url}}}"></a>
-    <p>{{{$post->meta_description}}}</p>
+    <p>{{{$post->summary}}}</p>
     <p>Posted: {{{$post->created_at->diffForHumans()}}}</p>
     @if ( $i < count($posts) -1)
     <hr>
