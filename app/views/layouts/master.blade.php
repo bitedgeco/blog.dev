@@ -26,11 +26,10 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/">Open Blog</a>
+        <a class="navbar-brand" href="/"><i class="fa fa-home"></i> Open Blog</a>
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-          <li><a href="/"><i class="fa fa-home"></i> Home</a></li>
           <li><a href="/posts/"><i class="fa fa-list"></i> Posts</a></li>
           @if (Auth::check())
           <li><a href="/posts/create/"><i class="fa fa-paint-brush"></i> Create</a></li>
