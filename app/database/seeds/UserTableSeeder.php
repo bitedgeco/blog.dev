@@ -12,8 +12,8 @@ class UserTableSeeder extends Seeder
 		$user->save();
 
 		$user = new User();
-		$user->email = 'test@test.test';
-		$user->screen_name = 'test';
+		$user->email = 'bob@bob.com';
+		$user->screen_name = 'Bob';
 		$user->password = $_ENV['USER_PASSWORD'];
 		$user->save();
 

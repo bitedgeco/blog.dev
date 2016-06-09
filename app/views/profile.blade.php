@@ -19,6 +19,7 @@
     <img height="100" src="{{{$post->img_url}}}"></a>
     <p>{{{$post->meta_description}}}</p>
     <p>Posted: {{{$post->created_at->diffForHumans()}}}</p>
+    <p>Catagory: <a href="{{{ action('PostsController@catagory', $post->catagory) }}}">{{{$post->catagory}}}</a></p>
     <a href="{{{ action('PostsController@edit', $post->id) }}}" class="btn btn-default">edit/delete</a>
     @if ( $i < count(Auth::user()->posts) -1)
     <hr>

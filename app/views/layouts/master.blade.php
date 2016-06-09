@@ -26,7 +26,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/">James' Laravel</a>
+        <a class="navbar-brand" href="/">Open Blog</a>
       </div>
       <div id="navbar" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
@@ -42,7 +42,7 @@
       <div class="nav-menu btn-group">
         @if (Auth::check())
         <a href="{{action ('HomeController@logOut') }}" type="button" class="btn btn-default" id="logout-button">Logout</a>
-        <a href="/profile" type="button" class="btn btn-default" id="profile-button">Profile</a>
+        <a href="/profile" type="button" class="btn btn-default" id="profile-button">{{{Auth::user()->screen_name}}}'s Profile</a>
         @else 
         <!-- Login & Signup Buttons -->
         <!-- These only show if the user is logged OUT -->
@@ -105,11 +105,6 @@
             </div>
           </div>
         </div>
-      </div>
-      <div>
-        @if (Auth::check())
-        Welcome {{{Auth::user()->screen_name}}}
-        @endif
       </div>
       <!-- Search bar  -->
       <div class="col-sm-3 col-md-3 pull-right">

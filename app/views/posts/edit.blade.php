@@ -17,9 +17,9 @@ Edit form here
         	value="{{{$post->title}}}">
             {{ $errors->first('title', '<span class="help-block">:message</span>') }}
         <br>
-        <label>Image URL</label>
+        <label>Image URL*</label>
         <br>
-        <input class="form-control" name="img_url" placeholder="img-url"
+        <input class="form-control" name="img_url" placeholder="img-url*"
         	value="{{{$post->img_url}}}">
             {{ $errors->first('img_url', '<span class="help-block">:message</span>') }}
         <br>
@@ -28,16 +28,16 @@ Edit form here
         <textarea class="form-control" rows="3" name="content" placeholder="Content*" required>{{{$post->content}}}</textarea>
         {{ $errors->first('content', '<span class="help-block">:message</span>') }}
         <br>
-        <label>Catagory</label>
+        <label>Catagory*</label>
         <br>
-        <input class="form-control" name="catagory" placeholder="catagory"
+        <input class="form-control" name="catagory" placeholder="catagory*"
         	value="{{{$post->catagory}}}">
         <br>
-        <label>meta-description</label>
+        <label>Summary*</label>
         <br>
-        <input class="form-control" name="meta_description" placeholder="meta description, 160 characters only" type="text" maxlength="160"
-        	value="{{{$post->meta_description}}}"">
-            {{ $errors->first('meta_description', '<span class="help-block">:message</span>') }}
+        <input class="form-control" name="summary" placeholder="summary*, 160 characters only" type="text" maxlength="160"
+        	value="{{{$post->summary}}}"">
+            {{ $errors->first('summary', '<span class="help-block">:message</span>') }}
         <br>
     	<button type="submit" class="btn btn-default">Edit</button>
 	</div>

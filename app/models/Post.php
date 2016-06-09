@@ -23,8 +23,11 @@ class Post extends BaseModel
         return static::where('user_id', '=', $id)->get();
     }
 
+    public static function getCatagory($catagory)
+    {
+        $posts = self::where('catagory', '=', $catagory)->get(); 
 
-
-
+        return $posts;
+    }
 }    
 

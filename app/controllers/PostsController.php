@@ -27,6 +27,13 @@ class PostsController extends \BaseController {
     	return View::make('author')->with('posts', $posts)->with('screen_name', $screen_name);	
 	}
 
+	public function catagory($catagory) 
+	{
+		$posts = Post::getCatagory($catagory);
+
+    	return View::make('posts.catagory')->with(['posts' => $posts, 'catagory' => $catagory]);	
+	}
+
 	/**
 	 * Show the form for creating a new resource.
 	 *
@@ -86,7 +93,12 @@ class PostsController extends \BaseController {
 	public function show($id)
 	{
 
-	$post = Post::find($id);
+	try{ 
+		$post = Post::findOrFail($id);
+	} catch (Exception $e) {
+		App::abort(404);
+	}
+
 	return View::make('posts.show')->with('post', $post);
 
 	}

@@ -17,10 +17,10 @@ class CreatePostsTable extends Migration {
 			$table->increments('id');
 			$table->timestamps();
             $table->string('title');
-            $table->string('img_url')->nullable();
+            $table->string('img_url');
             $table->text('content');
-            $table->string('catagory')->nullable();
-            $table->string('meta_description', 160)->nullable();
+            $table->string('catagory');
+            $table->string('summary', 160);
 		});
 	}
 

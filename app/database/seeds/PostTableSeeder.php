@@ -12,7 +12,7 @@ class PostTableSeeder extends Seeder
 
 		The biggest engine bike I have ever owned or ridden was a 600cc Aprilia pegaso.';
         $post->catagory = 'Vehicles';
-        $post->meta_description = 'Motorcycles are nice to look at. It sucks if you crash though.';
+        $post->summary = 'Motorcycles are nice to look at. It sucks if you crash though.';
         $post->user_id = User::first()->id;
         $post->save();
 
@@ -27,7 +27,7 @@ class PostTableSeeder extends Seeder
 
 			Eagles fans are among the most loyal in the NFL. They consistently rank in the top three in attendance and have sold out every game since the 1999 season. In a Sports Illustrated poll of 321 NFL players, Eagles fans were selected the most intimidating fans in the NFL.";
         $post->catagory = 'Sport';
-        $post->meta_description = 'I like the Eagles becasue their fans booed Santa Claus';
+        $post->summary = 'I like the Eagles becasue their fans booed Santa Claus';
         $post->user_id = User::first()->id;
         $post->save();
 
@@ -36,8 +36,8 @@ class PostTableSeeder extends Seeder
         $post->img_url = 'http://damhyul3s75yv.cloudfront.net/photos/12054/original_Emirates_First_Class_Lounge_Review-Shower.jpg';
         $post->content = '<p>A shower is a place in which a person bathes under a spray of typically warm or hot water. Indoors, there is a drain in the floor. Most showers have temperature, spray pressure and adjustable showerhead nozzle settings.</p> <p>The simplest showers have a swivelling nozzle aiming down on the user, while more complex showers have a showerhead connected to a hose that has a mounting bracket. This allows the showerer to spray the water at different parts of their body. A shower can be installed in a small shower stall or bathtub with a plastic shower curtain or door.</p> <p>Showering is common in Western culture due to the efficiency of using it compared to a bathtub. Its use in hygiene is therefore common practice. A shower uses less water on average than a bath: 80 litres for a shower compared to 150 litres for a bath.</p>';
         $post->catagory = 'Lifestyle'; 
-        $post->meta_description = 'A shower is a place in which a person bathes under a spray of typically warm or hot water';
-        $post->user_id = User::first()->id;
+        $post->summary = 'A shower is a place in which a person bathes under a spray of typically warm or hot water';
+        $post->user_id = User::all()->get(1)->id;
         $post->save();
 
 		$post = new Post();
@@ -45,8 +45,8 @@ class PostTableSeeder extends Seeder
         $post->img_url = 'http://i.imgur.com/xHdgwXh.jpg';
         $post->content = 'Bitcoin is a hybrid asset, it’s an invention, technology, payment processor, network, store of value, unit of account, currency, commodity, investment et cetera, hence a hybrid asset. Bitcoins allow any 2 people to transact almost free and instantly, anytime, anywhere online with no 3rd parties such as banks or governments involved. Sending someone money is as quick and easy as sending an email.';
         $post->catagory = 'Fiance';
-        $post->meta_description = 'Bitcoins allow any 2 people to transact almost free and instantly, anytime, anywhere';
-        $post->user_id = User::first()->id;
+        $post->summary = 'Bitcoins allow any 2 people to transact almost free and instantly, anytime, anywhere';
+        $post->user_id = User::all()->get(1)->id;
         $post->save();
 	}
 

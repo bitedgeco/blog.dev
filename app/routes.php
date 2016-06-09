@@ -30,3 +30,5 @@ Route::get('/logOut', 'HomeController@logOut' );
 Route::post('/newUser', 'HomeController@storeUser' );
 
 Route::get('/author/{screen_name}', 'PostsController@author' );
+
+Route::get('posts/catagory/{catagory}', 'PostsController@catagory' );

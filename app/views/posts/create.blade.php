@@ -15,9 +15,9 @@ Create
         	value="{{{ Input::old('title') }}}">
             {{ $errors->first('title', '<span class="help-block">:message</span>') }}
         <br>
-        <label>Image URL</label>
+        <label>Image URL*</label>
         <br>
-        <input class="form-control" name="img_url" placeholder="img-url"
+        <input class="form-control" name="img_url" placeholder="img-url" required
         	value="{{{ Input::old('img_url') }}}">
             {{ $errors->first('img_url', '<span class="help-block">:message</span>') }}
         <br>
@@ -26,16 +26,16 @@ Create
         <textarea class="form-control" rows="3" name="content" placeholder="Content*" required>{{{ Input::old('content') }}}</textarea>
         {{ $errors->first('content', '<span class="help-block">:message</span>') }}
         <br>
-        <label>Catagory</label>
+        <label>Catagory*</label>
         <br>
-        <input class="form-control" name="catagory" placeholder="catagory"
+        <input class="form-control" name="catagory" placeholder="catagory" required
         	value="{{{ Input::old('catagory') }}}">
         <br>
-        <label>meta-description</label>
+        <label>Summary*</label>
         <br>
-        <input class="form-control" name="meta_description" placeholder="meta description, 160 characters only" type="text" maxlength="160"
-        	value="{{{ Input::old('meta_description') }}}"">
-            {{ $errors->first('meta_description', '<span class="help-block">:message</span>') }}
+        <input class="form-control" name="summary" placeholder="summary, 160 characters only" type="text" maxlength="160" required
+        	value="{{{ Input::old('summary') }}}"">
+            {{ $errors->first('summary', '<span class="help-block">:message</span>') }}
         <br>
     	<button type="submit" class="btn btn-default">Submit</button>
 	</div>
