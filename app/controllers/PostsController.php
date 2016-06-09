@@ -115,7 +115,7 @@ class PostsController extends \BaseController {
 		if (Auth::id() == $post->user->id){
 			return View::make('posts.edit')->with('post', $post);
 		} else {
-			Session::flash('errorMessage', 'You can not edit other peopels posts');
+			Session::flash('errorMessage', "You cannot edit other people's posts");
 			return Redirect::to('/'); 
 		}
 	}
