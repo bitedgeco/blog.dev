@@ -70,7 +70,7 @@ class PostsController extends \BaseController {
 			$post->content = Input::get('content');
 			$post->img_url = Input::get('img_url');
 			$post->catagory = Input::get('catagory');
-			$post->meta_description = Input::get('meta_description');
+			$post->summary = Input::get('summary');
 			$post->user_id = Auth::user()->id;
 
 			if ($post->save()) {
@@ -139,7 +139,7 @@ class PostsController extends \BaseController {
 			$post->content = Input::get('content');
 			$post->img_url = Input::get('img_url');
 			$post->catagory = Input::get('catagory');
-			$post->meta_description = Input::get('meta_description');
+			$post->summary = Input::get('summary');
 			if ($post->save()) {
 				Session::flash('successMessage', 'Successfull edit!');
 				return Redirect::action('PostsController@show', $post->id);
