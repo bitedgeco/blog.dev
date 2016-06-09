@@ -13,39 +13,34 @@ class PostsController extends \BaseController {
 		$this->beforeFilter('auth', ['except' =>['index', 'show', 'author']]);
 	}
 
-
-
-
 	public function index() 
 	{
-        if (Input::has('q')) {
-            $searchTerm = Input::get('q');
-            $posts = Post::where('title', 'like', "%{$searchTerm}%")
-            				->orWhere('content', 'like', "%{$searchTerm}%")
-            				->orWhere('summary', 'like', "%{$searchTerm}%")
-            				->orWhere('catagory', 'like', "%{$searchTerm}%")            				
-            				->paginate(10);
-        } else {
-			$posts = Post::orderBy('created_at', 'DESC')->paginate(10);
-        }
-        return View::make('posts.index')->with('posts', $posts);
+		$posts = Post::orderBy('created_at', 'DESC')->paginate(10);
+
+    	return View::make('posts.index')->with('posts', $posts);	
 	}
 
+	public function search() 
+	{
+        $searchTerm = Input::get('q');
+        $posts = Post::where('title', 'like', "%{$searchTerm}%")
+        				->orWhere('content', 'like', "%{$searchTerm}%")
+        				->orWhere('summary', 'like', "%{$searchTerm}%")
+        				->orWhere('catagory', 'like', "%{$searchTerm}%")            				
+        				->paginate(10);
 
-
-
+        return View::make('search')->with(['posts' => $posts, 'searchTerm' => $searchTerm]);
+	}
 
 	public function author($screen_name) 
 	{
 		$posts = Post::getIdFromSceenName($screen_name);
-
     	return View::make('author')->with('posts', $posts)->with('screen_name', $screen_name);	
 	}
 
 	public function catagory($catagory) 
 	{
 		$posts = Post::getCatagory($catagory);
-
     	return View::make('posts.catagory')->with(['posts' => $posts, 'catagory' => $catagory]);	
 	}
 
@@ -66,11 +61,9 @@ class PostsController extends \BaseController {
 	 */
 	public function store()
 	{
-
 		$validator = Validator::make(Input::all(), Post::$rules);
 
 		if ($validator->fails()) {
-
 			$inputsForLog = Input::all();
 			$logMsg = '';
 			foreach ($inputsForLog as $field => $userEntered) {
@@ -107,15 +100,12 @@ class PostsController extends \BaseController {
 	 */
 	public function show($id)
 	{
-
 	try{ 
 		$post = Post::findOrFail($id);
 	} catch (Exception $e) {
 		App::abort(404);
 	}
-
 	return View::make('posts.show')->with('post', $post);
-
 	}
 
 	/**
