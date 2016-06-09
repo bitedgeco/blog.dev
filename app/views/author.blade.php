@@ -5,7 +5,7 @@
 @stop
 
 @section('content')
-<h1>All posts for {{{$screen_name}}}</h1>
+<h1>All posts by {{{$screen_name}}}</h1>
 
 @foreach($posts as $i => $post)
 	<a href="/posts/{{{$post->id}}}">

@@ -13,12 +13,27 @@ class PostsController extends \BaseController {
 		$this->beforeFilter('auth', ['except' =>['index', 'show', 'author']]);
 	}
 
+
+
+
 	public function index() 
 	{
-		$posts = Post::orderBy('created_at', 'DESC')->paginate(10);
-
-    	return View::make('posts.index')->with('posts', $posts);	
+        if (Input::has('q')) {
+            $searchTerm = Input::get('q');
+            $posts = Post::where('title', 'like', "%{$searchTerm}%")
+            				->orWhere('content', 'like', "%{$searchTerm}%")
+            				->orWhere('summary', 'like', "%{$searchTerm}%")
+            				->orWhere('catagory', 'like', "%{$searchTerm}%")            				
+            				->paginate(10);
+        } else {
+			$posts = Post::orderBy('created_at', 'DESC')->paginate(10);
+        }
+        return View::make('posts.index')->with('posts', $posts);
 	}
+
+
+
+
 
 	public function author($screen_name) 
 	{
