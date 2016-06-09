@@ -35,20 +35,8 @@
           @if (Auth::check())
           <li><a href="/posts/create/"><i class="fa fa-paint-brush"></i> Create</a></li>
           @endif
-<!--           <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Recent posts<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="#">Last post</a></li>
-              <li><a href="#">Next most recent post</a></li>
-              <li><a href="#">Next most recent post</a></li>
-              <li><a href="#">Next most recent post</a></li>
-              <li><a href="#">Next most recent post</a></li>
-            </ul> -->
           </li>
         </ul>
-
-
-
       <!-- Logout & Profile Buttons -->
       <!-- These buttons only show if the user is logged IN --> 
       <div class="nav-menu btn-group">
@@ -118,7 +106,11 @@
           </div>
         </div>
       </div>
-
+      <div>
+        @if (Auth::check())
+        Welcome {{{Auth::user()->screen_name}}}
+        @endif
+      </div>
       <!-- Search bar  -->
       <div class="col-sm-3 col-md-3 pull-right">
         <form class="navbar-form" role="search">

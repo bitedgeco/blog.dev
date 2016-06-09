@@ -15,5 +15,16 @@ class Post extends BaseModel
 	{
 		return $this->belongsTo('User'); 
 	}
+
+    public static function getIdFromSceenName($screen_name)
+    {
+        $id = User::where('screen_name', '=', $screen_name)->get()->first()->id; 
+
+        return static::where('user_id', '=', $id)->get();
+    }
+
+
+
+
 }    
 

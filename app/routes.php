@@ -21,11 +21,6 @@ $post = Post::find(1);
 $post->delete();
 });
 
-Route::get('/sayhello/{name?}', function($name = 'world')
-{
-    return View::make('my-first-view');
-});
-
 Route::post('/logIn', 'HomeController@logIn' );
 
 Route::get('/profile', 'HomeController@profile' );
@@ -33,3 +28,5 @@ Route::get('/profile', 'HomeController@profile' );
 Route::get('/logOut', 'HomeController@logOut' );
 
 Route::post('/newUser', 'HomeController@storeUser' );
+
+Route::get('/author/{screen_name}', 'PostsController@author' );

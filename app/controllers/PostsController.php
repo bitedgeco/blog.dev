@@ -7,12 +7,24 @@ class PostsController extends \BaseController {
 	 *
 	 * @return Response
 	 */
+
+	public function __construct()
+	{
+		$this->beforeFilter('auth', ['except' =>['index', 'show', 'author']]);
+	}
+
 	public function index() 
 	{
-
 		$posts = Post::paginate(10);
 
     	return View::make('posts.index')->with('posts', $posts);	
+	}
+
+	public function author($screen_name) 
+	{
+		$posts = Post::getIdFromSceenName($screen_name);
+
+    	return View::make('author')->with('posts', $posts)->with('screen_name', $screen_name);	
 	}
 
 	/**
@@ -52,6 +64,7 @@ class PostsController extends \BaseController {
 			$post->img_url = Input::get('img_url');
 			$post->catagory = Input::get('catagory');
 			$post->meta_description = Input::get('meta_description');
+			$post->user_id = Auth::user()->id;
 
 			if ($post->save()) {
 				Session::flash('successMessage', 'Successfuly created!');
@@ -87,7 +100,12 @@ class PostsController extends \BaseController {
 	public function edit($id)
 	{
 		$post = Post::find($id);
-		return View::make('posts.edit')->with('post', $post);
+		if (Auth::id() == $post->user->id){
+			return View::make('posts.edit')->with('post', $post);
+		} else {
+			Session::flash('errorMessage', 'You can not edit other peopels posts');
+			return Redirect::to('/'); 
+		}
 	}
 
 	/**
@@ -132,10 +150,5 @@ class PostsController extends \BaseController {
 		$post->delete();
 		Session::flash('successMessage', 'Successfuly deleted!');
 		return Redirect::action('PostsController@index');
-	}
-
-	public function __construct()
-	{
-		$this->beforeFilter('auth', ['except' =>['index', 'show']]);
 	}
 }
