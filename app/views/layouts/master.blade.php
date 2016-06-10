@@ -13,6 +13,8 @@
 	<!-- external CSS -->
 	<link rel="stylesheet" href="/css/main.css"> 
 
+  <meta name="viewport" content="width=device-width">
+
   @yield('top-script')
 
 </head>
